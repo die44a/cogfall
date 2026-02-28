@@ -17,6 +17,12 @@ namespace _Project.Core.Runtime.Menu
             _sceneLoaderService = sceneLoaderService;
             _menuViewModel = menuViewModel;
         }
+
+        public void Initialize()
+        {
+            _menuViewModel.StartButtonClicked += OnStartButtonClicked;
+            _menuViewModel.ExitButtonClicked += OnExitButtonClicked;
+        }
         
         public void OnStartButtonClicked()
         {

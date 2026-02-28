@@ -8,28 +8,28 @@ namespace _Project.Core.Runtime.Menu
     {
         private MenuModel _menuModel;
         private MenuView _menuView;
-        private MenuService _menuService;
 
         [Inject]
         private void Construct(MenuModel menuModel, 
-            MenuView menuView, 
-            MenuService menuService)
+            MenuView menuView)
         {
             _menuModel = menuModel;
             _menuView = menuView;
-            _menuService = menuService;
         }
+        
+        public Action StartButtonClicked { get; set; }
+        public Action ExitButtonClicked { get; set; }
         
         public void HandleStartButtonClick()
         {
             Debug.Log("Start button click");
-            _menuService.OnStartButtonClicked();
+            StartButtonClicked?.Invoke();
         }
 
         public void HandleExitButtonClick()
         {
-            _menuService.OnExitButtonClicked();
             Debug.Log("Exit button click");
+            ExitButtonClicked?.Invoke();
         }
     }
 }
