@@ -6,10 +6,13 @@ namespace _Project.Core.Runtime.Bootstrap
     public class BootstrapInitializer : IInitializable
     {
         private readonly SceneLoaderService _sceneLoaderService;
+        private readonly InputService _inputService;
 
-        public BootstrapInitializer(SceneLoaderService sceneLoaderService)
+        public BootstrapInitializer(SceneLoaderService sceneLoaderService,
+            InputService inputService)
         {
             _sceneLoaderService = sceneLoaderService;
+            _inputService = inputService;
         }
 
         public void Initialize()
