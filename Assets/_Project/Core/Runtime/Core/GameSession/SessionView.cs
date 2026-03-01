@@ -1,4 +1,5 @@
 using System;
+using _Project.Core.Runtime.Services;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -10,6 +11,7 @@ namespace _Project.Core.Runtime.Core.GameSession
         [SerializeField] private GameObject pauseMenu;
         
         private SessionViewModel _viewModel;
+        private InputService _inputService;
         private bool IsPaused => _viewModel.IsPaused;
 
         [Inject]
@@ -20,12 +22,14 @@ namespace _Project.Core.Runtime.Core.GameSession
 
         public void Initialize()
         {
-            _viewModel.PauseStateChanged += OnTogglePause;
+            _viewModel.StateChanged += TogglePause;
+            _inputService.Pause += OnPause;
         }
 
         public void Dispose()
         {
-            _viewModel.PauseStateChanged -= OnTogglePause;
+            _viewModel.StateChanged -= TogglePause;
+            _inputService.Pause -= OnPause;
         }
 
         public void OnResumeButtonClicked()
@@ -35,12 +39,17 @@ namespace _Project.Core.Runtime.Core.GameSession
 
         public void OnExitToMainMenuButtonClicked()
         {
-            _viewModel.OnExitPressed();
+            _viewModel.OnExitToMenuPressed();
         }
-        
-        public void OnTogglePause()
+
+        public void TogglePause()
         {
             pauseMenu.SetActive(IsPaused);
+        }
+
+        public void OnPause()
+        {
+            _viewModel.RequestPause();
         }
     }
 }

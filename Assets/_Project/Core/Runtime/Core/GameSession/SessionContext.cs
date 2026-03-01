@@ -4,11 +4,15 @@ using _Project.Core.Runtime.Core.GameSession.States;
 
 namespace _Project.Core.Runtime.Core.GameSession
 {
-    public class SessionFlowContoller : IFsm
+    public class SessionContext : IFsm
     {
+        // Add model of session in the future
+        
         public SessionState CurrentState { get; private set; }
         private readonly Dictionary<Type, SessionState> _states = new ();
 
+        public event Action<SessionState> StateChanged;
+        
         public void AddState(SessionState state)
             => _states.Add(state.GetType(), state);
 
@@ -24,6 +28,8 @@ namespace _Project.Core.Runtime.Core.GameSession
             CurrentState?.Exit();
             CurrentState = newState;
             CurrentState?.Enter();
+            
+            StateChanged?.Invoke(CurrentState);
         }
     
         public void Update()

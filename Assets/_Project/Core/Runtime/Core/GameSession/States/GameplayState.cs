@@ -5,29 +5,29 @@ namespace _Project.Core.Runtime.Core.GameSession.States
 {
     public class GameplayState : SessionState
     {
-        private InputService _inputService;
+        private SessionViewModel _sessionViewModel;
         
         public GameplayState(IFsm fsm) : base(fsm) {}
 
         [Inject]
-        public void Construct(InputService inputService)
+        public void Construct(SessionViewModel sessionViewModel)
         {
-            _inputService = inputService;
+            _sessionViewModel = sessionViewModel;
         }
 
-        private void OnTogglePause()
+        private void OnPauseRequested()
         {
             Fsm.SetState<PauseState>();
         }
         
         public override void Enter()
         {
-            _inputService.TogglePause += OnTogglePause;
+            _sessionViewModel.PauseRequested += OnPauseRequested;
         }
 
         public override void Exit()
         {
-            _inputService.TogglePause -= OnTogglePause;
+            _sessionViewModel.PauseRequested -= OnPauseRequested;
         }
     }
 }

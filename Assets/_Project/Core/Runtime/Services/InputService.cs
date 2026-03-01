@@ -10,7 +10,7 @@ namespace _Project.Core.Runtime.Services
         private InputActions _inputActions;
         
         public event Action<Vector2> Move;
-        public event Action TogglePause;
+        public event Action Pause;
 
         public InputService()
         {
@@ -24,7 +24,7 @@ namespace _Project.Core.Runtime.Services
                 Move?.Invoke(Vector2.zero);
             
             _inputActions.Gameplay.TogglePause.performed += ctx =>
-                TogglePause?.Invoke();
+                Pause?.Invoke();
         }
 
         public void Dispose()
