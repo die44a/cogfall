@@ -11,9 +11,9 @@ namespace _Project.Core.Runtime.Core
         // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
         {
+            Container.BindInterfacesAndSelfTo<SessionContext>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SessionViewModel>().AsSingle();
             Container.BindInstance(sessionView).AsSingle();
-            Container.Bind<SessionContext>().AsSingle();
-            Container.Bind<SessionView>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<CoreInitializer>().AsSingle().NonLazy();
         }

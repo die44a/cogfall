@@ -15,9 +15,11 @@ namespace _Project.Core.Runtime.Core.GameSession
         private bool IsPaused => _viewModel.IsPaused;
 
         [Inject]
-        public void Construct(SessionViewModel viewModel)
+        public void Construct(SessionViewModel viewModel,
+            InputService inputService)
         {
             _viewModel = viewModel;
+            _inputService = inputService;
         }
 
         public void Initialize()

@@ -21,8 +21,8 @@ namespace _Project.Core.Runtime.Core
         
         public void Initialize()
         {
-            _view.Initialize();
             _viewModel.Initialize();
+            _view.Initialize();
             _context.Initialize();
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Project.Core.Runtime.Core.GameSession.States;
+using Zenject;
 
 namespace _Project.Core.Runtime.Core.GameSession
 {
@@ -8,10 +9,17 @@ namespace _Project.Core.Runtime.Core.GameSession
     {
         // Add model of session in the future
         
+        private readonly DiContainer _container;
+        
         public SessionState CurrentState { get; private set; }
         private readonly Dictionary<Type, SessionState> _states = new ();
-
         public event Action<SessionState> StateChanged;
+        
+        [Inject]
+        public SessionContext(DiContainer container)
+        {
+            _container = container;
+        }
         
         public void AddState(SessionState state)
             => _states.Add(state.GetType(), state);
@@ -35,10 +43,11 @@ namespace _Project.Core.Runtime.Core.GameSession
         public void Update()
             => CurrentState?.Update();
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public void Initialize()
         {
-            AddState(new PauseState(this));
-            AddState(new GameplayState(this));
+            AddState(_container.Instantiate<PauseState>());
+            AddState(_container.Instantiate<GameplayState>());
 
             SetState<GameplayState>();
         }
