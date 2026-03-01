@@ -5,7 +5,7 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Core.GameSession
 {
-    public class SessionView : MonoBehaviour
+    public class SessionView : MonoBehaviour, IDisposable
     {
         [SerializeField] private GameObject pauseMenu;
         
@@ -20,16 +20,27 @@ namespace _Project.Core.Runtime.Core.GameSession
 
         public void Initialize()
         {
-            
-        }
-        public void ToggleView()
-        {
-            pauseMenu.SetActive(IsPaused);
+            _viewModel.PauseStateChanged += OnTogglePause;
         }
 
-        public void OnPauseClicked(InputAction.CallbackContext context)
+        public void Dispose()
         {
-            _viewModel.TogglePause();
+            _viewModel.PauseStateChanged -= OnTogglePause;
+        }
+
+        public void OnResumeButtonClicked()
+        {
+            _viewModel.OnResumePressed();
+        }
+
+        public void OnExitToMainMenuButtonClicked()
+        {
+            _viewModel.OnExitPressed();
+        }
+        
+        public void OnTogglePause()
+        {
+            pauseMenu.SetActive(IsPaused);
         }
     }
 }
