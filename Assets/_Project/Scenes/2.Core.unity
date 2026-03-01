@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 1057807586}
   - component: {fileID: 1057807588}
   - component: {fileID: 1057807587}
+  - component: {fileID: 1057807589}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -456,6 +457,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057807585}
   m_CullTransparentMesh: 1
+--- !u!114 &1057807589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057807585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86984a89fb8204b459f6bda2d9c2760d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Core.Runtime.Core.PauseMenu.PauseMenu
+  _resumeButton: {fileID: 732806986}
+  _exitToMainMenuButton: {fileID: 1624307757}
 --- !u!1 &1064502056
 GameObject:
   m_ObjectHideFlags: 0
