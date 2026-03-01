@@ -1,17 +1,29 @@
+using _Project.Core.Runtime.Core.GameSession;
 using Zenject;
 
 namespace _Project.Core.Runtime.Core
 {
     public class CoreInitializer : IInitializable
     {
-        public CoreInitializer()
+        private readonly SessionView _view;
+        private readonly SessionViewModel _viewModel;
+        private readonly SessionContext _context;
+        
+        [Inject]
+        public CoreInitializer(SessionView view,
+            SessionContext context,
+            SessionViewModel viewModel)
         {
-            
+            _view = view;
+            _context = context;
+            _viewModel = viewModel;
         }
         
         public void Initialize()
         {
-            
+            _view.Initialize();
+            _viewModel.Initialize();
+            _context.Initialize();
         }
     }
 }
