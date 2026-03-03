@@ -1,10 +1,10 @@
 using System;
+using _Project.Core.Runtime.Core.GameSession;
 using _Project.Core.Runtime.Core.GameSession.States;
 using _Project.Core.Runtime.Services;
-using UnityEngine;
 using Zenject;
 
-namespace _Project.Core.Runtime.Core.GameSession
+namespace _Project.Core.Runtime.Core.UI.ViewModels
 {
     public class SessionViewModel : IDisposable
     {

@@ -1,10 +1,11 @@
 using System;
+using _Project.Core.Runtime.Core.GameSession;
+using _Project.Core.Runtime.Core.UI.ViewModels;
 using _Project.Core.Runtime.Services;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
-namespace _Project.Core.Runtime.Core.GameSession
+namespace _Project.Core.Runtime.Core.UI.Views
 {
     public class SessionView : MonoBehaviour, IDisposable
     {
