@@ -6,7 +6,7 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Core.UI.ViewModels
 {
-    public class SessionViewModel : IDisposable
+    public class SessionViewModel : ISessionActions, IDisposable
     {
         private readonly SessionContext _context;
         private readonly SceneLoaderService _sceneLoaderService;

@@ -7,14 +7,14 @@ namespace _Project.Core.Runtime.Core.GameSession.States
 {
     public class GameplayState : SessionState
     {
-        private SessionViewModel _sessionViewModel;
+        private ISessionActions _sessionActions;
         
         public GameplayState(IFsm fsm) : base(fsm) {}
 
         [Inject]
-        public void Construct(SessionViewModel sessionViewModel)
+        public void Construct(ISessionActions sessionViewModel)
         {
-            _sessionViewModel = sessionViewModel;
+            _sessionActions = sessionViewModel;
         }
 
         private void OnPauseRequested()
@@ -24,12 +24,12 @@ namespace _Project.Core.Runtime.Core.GameSession.States
         
         public override void Enter()
         {
-            _sessionViewModel.PauseRequested += OnPauseRequested;
+            _sessionActions.PauseRequested += OnPauseRequested;
         }
 
         public override void Exit()
         {
-            _sessionViewModel.PauseRequested -= OnPauseRequested;
+            _sessionActions.PauseRequested -= OnPauseRequested;
         }
     }
 }
