@@ -8,14 +8,15 @@ namespace _Project.Core.Runtime.Core.UI.ViewModels
 {
     public class SessionViewModel : IDisposable
     {
-        private SessionContext _context;
-        private SceneLoaderService _sceneLoaderService;
+        private readonly SessionContext _context;
+        private readonly SceneLoaderService _sceneLoaderService;
         public bool IsPaused => _context.CurrentState is PauseState;
         public event Action PauseRequested;
         public event Action StateChanged;
 
         [Inject]
-        public SessionViewModel(SessionContext context,
+        public SessionViewModel(
+            SessionContext context,
             SceneLoaderService sceneLoaderService)
         {
             _context = context;
@@ -29,10 +30,10 @@ namespace _Project.Core.Runtime.Core.UI.ViewModels
 
         public void Dispose()
         {
-         _context.StateChanged -= OnStateChanged;   
+            _context.StateChanged -= OnStateChanged;   
         }
         
-        public void OnStateChanged(SessionState state)
+        private void OnStateChanged(SessionState state)
         {
             StateChanged?.Invoke();
         }

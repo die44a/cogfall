@@ -16,7 +16,8 @@ namespace _Project.Core.Runtime.Core.UI.Views
         private bool IsPaused => _viewModel.IsPaused;
 
         [Inject]
-        public void Construct(SessionViewModel viewModel,
+        public void Construct(
+            SessionViewModel viewModel,
             InputService inputService)
         {
             _viewModel = viewModel;
@@ -45,12 +46,12 @@ namespace _Project.Core.Runtime.Core.UI.Views
             _viewModel.OnExitToMenuPressed();
         }
 
-        public void TogglePause()
+        private void TogglePause()
         {
             pauseMenu.SetActive(IsPaused);
         }
 
-        public void OnPause()
+        private void OnPause()
         {
             _viewModel.RequestPause();
         }

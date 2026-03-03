@@ -21,7 +21,7 @@ namespace _Project.Core.Runtime.Core.GameSession
             _container = container;
         }
         
-        public void AddState(SessionState state)
+        private void AddState(SessionState state)
             => _states.Add(state.GetType(), state);
 
         public void SetState<T>() where T : IState
