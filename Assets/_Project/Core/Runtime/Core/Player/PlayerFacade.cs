@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Project.Core.Runtime.Core.Player
 {
-    public class Player : MonoBehaviour
+    public class PlayerFacade : MonoBehaviour
     {
         [SerializeField] private CharacterConfig config;
         
@@ -17,7 +17,10 @@ namespace _Project.Core.Runtime.Core.Player
         private void InitializeModel()
         {
             if (config == null)
+            {
                 Debug.LogError("Player config is missing");
+                return;
+            }
             
             PlayerModel = new PlayerModel
             {
