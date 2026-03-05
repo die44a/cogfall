@@ -1,9 +1,9 @@
-using _Project.Core.Runtime.Core.UI.Views;
-using _Project.Core.Runtime.Core.UI.ViewModels;
 using _Project.Core.Runtime.Core.GameSession;
+using _Project.Core.Runtime.Core.UI.ViewModels;
+using _Project.Core.Runtime.Core.UI.Views;
 using Zenject;
 
-namespace _Project.Core.Runtime.Core
+namespace _Project.Core.Runtime.Core.CoreBootstrap
 {
     public class CoreInitializer : IInitializable
     {
