@@ -26,6 +26,8 @@ namespace _Project.Core.Runtime.Core.CoreBootstrap
             _viewModel.Initialize();
             _view.Initialize();
             _context.Initialize();
+            
+            _viewModel.StartGame();
         }
     }
 }

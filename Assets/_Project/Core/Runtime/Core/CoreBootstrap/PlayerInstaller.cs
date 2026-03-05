@@ -7,6 +7,7 @@ namespace _Project.Core.Runtime.Core.CoreBootstrap
     public class PlayerInstaller : MonoInstaller
     {
         [SerializeField] private GameObject playerPrefab;
+        [SerializeField] private Transform spawnPoint;
     
         // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
@@ -14,6 +15,7 @@ namespace _Project.Core.Runtime.Core.CoreBootstrap
             Container.BindInstance(playerPrefab);
             
             Container.Bind<PlayerFactory>().AsSingle();
+            Container.BindInstance(new SpawnPoint(spawnPoint)).AsSingle();
             Container.Bind<PlayerLifecycleService>().AsSingle();
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using _Project.Core.Runtime.Core.CoreBootstrap;
 using UnityEngine;
 
 namespace _Project.Core.Runtime.Core.Player
@@ -8,12 +9,18 @@ namespace _Project.Core.Runtime.Core.Player
         private readonly PlayerFactory _playerFactory;
         private PlayerFacade _player;
         
-        public PlayerLifecycleService(PlayerFactory playerFactory)
+        // TODO: Delete after level system will be created
+        private SpawnPoint _spawnPoint;
+        
+        public PlayerLifecycleService(PlayerFactory playerFactory,
+            SpawnPoint spawnPoint)
         {
             _playerFactory = playerFactory;
+            _spawnPoint = spawnPoint;
         }
 
-        public void Spawn(Transform spawnPoint)
+        // ReSharper disable Unity.PerformanceAnalysis
+        public void SpawnPlayer()
         {
             if (_player != null)
             {
@@ -21,19 +28,19 @@ namespace _Project.Core.Runtime.Core.Player
                 return;
             }
             
-            _player = _playerFactory.Create(spawnPoint);
+            _player = _playerFactory.Create(_spawnPoint.Transform);
         }
 
-        public void Respawn(Transform spawnPoint)
+        public void RespawnPlayer()
         {
             if (_player == null)
             {
-                Spawn(spawnPoint);
+                SpawnPlayer();
                 return;
             }
             
-            _player.transform.position = spawnPoint.position;
-            _player.transform.rotation = spawnPoint.rotation;
+            _player.transform.position = _spawnPoint.Transform.position;
+            _player.transform.rotation = _spawnPoint.Transform.rotation;
             _player.ResetState();
         }
     }
