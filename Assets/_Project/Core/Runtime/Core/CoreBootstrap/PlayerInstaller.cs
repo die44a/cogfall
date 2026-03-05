@@ -14,6 +14,7 @@ namespace _Project.Core.Runtime.Core.CoreBootstrap
             Container.BindInstance(playerPrefab);
             
             Container.Bind<PlayerFactory>().AsSingle();
+            Container.Bind<PlayerLifecycleService>().AsSingle();
         }
     }
 }

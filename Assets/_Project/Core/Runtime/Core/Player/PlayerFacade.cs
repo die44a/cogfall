@@ -30,5 +30,10 @@ namespace _Project.Core.Runtime.Core.Player
                 RotationSpeed = config.RotationSpeed
             };
         }
+
+        public void ResetState()
+        {
+            // Должно при респавне вовзращать все значения назад
+        }
     }
 }
