@@ -48,8 +48,7 @@ namespace _Project.Core.Runtime.Core.Main
                 tickable.LateTick(deltaTime);
             }
         }
-
-
+        
         public override void FixedUpdate()
         {
             base.FixedUpdate();

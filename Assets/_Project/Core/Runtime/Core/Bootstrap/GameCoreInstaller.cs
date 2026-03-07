@@ -4,7 +4,7 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Core.Bootstrap
 {
-    public class GameServicesInstaller : MonoInstaller
+    public class GameCoreInstaller : MonoInstaller
     {
         // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
