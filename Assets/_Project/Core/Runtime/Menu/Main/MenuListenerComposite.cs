@@ -8,11 +8,19 @@ namespace _Project.Core.Runtime.Menu.Main
     public class MenuListenerComposite: MonoBehaviour,
         IGameStartListener
     {
-        [Inject] private MenuManager _menuManager;
+        [Inject] 
+        private MenuManager _menuManager;
         
         [InjectLocal]
         private List<IMenuListener> _listeners = new();
 
+        public void OnGameStart()
+        {
+            foreach (var listener in _listeners)
+                if (listener is IGameStartListener  startGameListener)
+                    startGameListener.OnGameStart();
+        }
+        
         public void Awake()
         {
             _menuManager.AddListerner(this);
@@ -21,13 +29,6 @@ namespace _Project.Core.Runtime.Menu.Main
         public void OnDestroy()
         {
             _menuManager.RemoveListerner(this);
-        }
-
-        public void OnGameStart()
-        {
-            foreach (var listener in _listeners)
-                if (listener is IGameStartListener  startGameListener)
-                    startGameListener.OnGameStart();
         }
     }
 }

@@ -8,7 +8,8 @@ namespace _Project.Core.Runtime.Menu.Main
 {
     public sealed class MenuManager : IInitializable
     {
-        [Inject] private SceneLoaderService _sceneLoaderService;
+        [Inject] 
+        private SceneLoaderService _sceneLoaderService;
         
         public event Action OnGameStart;
         
@@ -29,10 +30,11 @@ namespace _Project.Core.Runtime.Menu.Main
             
             OnGameStart?.Invoke();
             _sceneLoaderService.LoadCoreScene();
+            
             Debug.Log("Game Started");
         }
 
-        public void Initialize()
+        void IInitializable.Initialize()
         {
             State = MenuState.MAIN;
             

@@ -2,11 +2,10 @@ using _Project.Core.Runtime.Menu.Main;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Core.Runtime.Menu
+namespace _Project.Core.Runtime.Menu.Bootstrap
 {
-    public class MenuInstaller : MonoInstaller
+    public class MenuServiceInstaller : MonoInstaller
     {
-        
         // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
         {
