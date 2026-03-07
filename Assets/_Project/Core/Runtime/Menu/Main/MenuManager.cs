@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using _Project.Core.Runtime.Services;
+using UnityEngine;
+using Zenject;
+
+namespace _Project.Core.Runtime.Menu.Main
+{
+    public sealed class MenuManager : IInitializable
+    {
+        [Inject] private SceneLoaderService _sceneLoaderService;
+        
+        public event Action OnGameStart;
+        
+        public MenuState State { get; private set; }
+        private readonly List<IMenuListener> _listeners = new();
+        
+        public void AddListerner(IMenuListener listener)
+            => _listeners.Add(listener);
+        
+        public void RemoveListerner(IMenuListener listener)
+            => _listeners.Remove(listener);
+
+        public void StartGame()
+        {
+            foreach (var listener in _listeners)
+                if (listener is IStartGameListener  startGameListener)
+                    startGameListener.OnGameStart();
+            
+            OnGameStart?.Invoke();
+            _sceneLoaderService.LoadCoreScene();
+            Debug.Log("Game Started");
+        }
+
+        public void Initialize()
+        {
+            State = MenuState.MAIN;
+        }
+    }
+}
