@@ -43,7 +43,7 @@ namespace _Project.Core.Runtime.Core.Main
 
         void IInitializable.Initialize()
         {
-            State = GameState.GAMEPLAY;
+            State = GameState.PLAY;
             
             Debug.Log("Game Manager initialized");
         }

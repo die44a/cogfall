@@ -1,4 +1,3 @@
-using _Project.Core.Runtime.Core.CoreBootstrap;
 using _Project.Core.Runtime.Core.Player;
 using UnityEngine;
 using Zenject;

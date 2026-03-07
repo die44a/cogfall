@@ -2,7 +2,7 @@ using _Project.Core.Runtime.Core.Main;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Core.Runtime.Core.CoreBootstrap
+namespace _Project.Core.Runtime.Core.Bootstrap
 {
     public class GameServicesInstaller : MonoInstaller
     {
