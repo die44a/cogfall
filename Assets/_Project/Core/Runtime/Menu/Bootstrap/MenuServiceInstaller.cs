@@ -11,7 +11,7 @@ namespace _Project.Core.Runtime.Menu.Bootstrap
         {
             Container.BindInterfacesAndSelfTo<MenuManager>().AsSingle().NonLazy();
             
-            Debug.Log("Menu installed");
+            Debug.Log("Menu service installed");
         }
     }
 }

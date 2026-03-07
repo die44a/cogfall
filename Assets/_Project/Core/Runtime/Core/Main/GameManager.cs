@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace _Project.Core.Runtime.Core.Main
 {
-    public sealed class GameManager
+    public sealed class GameManager : IInitializable
     {
         public event Action OnPauseGame;
         public event Action OnResumeGame;
@@ -38,6 +39,13 @@ namespace _Project.Core.Runtime.Core.Main
             OnResumeGame?.Invoke();
             
             Debug.Log("Game Resumed");
+        }
+
+        void IInitializable.Initialize()
+        {
+            State = GameState.GAMEPLAY;
+            
+            Debug.Log("Game Manager initialized");
         }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Project.Core.Runtime.Core.CoreBootstrap
+namespace _Project.Core.Runtime.Core.Bootstrap
 {
     public class SpawnPoint
     {

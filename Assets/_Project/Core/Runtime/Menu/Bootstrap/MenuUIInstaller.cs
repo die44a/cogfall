@@ -12,6 +12,8 @@ namespace _Project.Core.Runtime.Menu.Bootstrap
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<MainMenuScreen>().FromInstance(mainMenuScreen);
+            
+            Debug.Log("Menu UI installed");
         }
     }
 }

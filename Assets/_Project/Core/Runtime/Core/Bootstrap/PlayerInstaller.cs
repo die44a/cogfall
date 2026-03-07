@@ -1,8 +1,9 @@
+using _Project.Core.Runtime.Core.CoreBootstrap;
 using _Project.Core.Runtime.Core.Player;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Core.Runtime.Core.CoreBootstrap
+namespace _Project.Core.Runtime.Core.Bootstrap
 {
     public class PlayerInstaller : MonoInstaller
     {
