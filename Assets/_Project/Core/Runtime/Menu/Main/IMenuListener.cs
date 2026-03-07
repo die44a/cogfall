@@ -4,7 +4,7 @@ namespace _Project.Core.Runtime.Menu.Main
     {
     }
 
-    public interface IStartGameListener : IMenuListener
+    public interface IGameStartListener : IMenuListener
     {
         void OnGameStart();
     }

@@ -24,7 +24,7 @@ namespace _Project.Core.Runtime.Menu.Main
         public void StartGame()
         {
             foreach (var listener in _listeners)
-                if (listener is IStartGameListener  startGameListener)
+                if (listener is IGameStartListener  startGameListener)
                     startGameListener.OnGameStart();
             
             OnGameStart?.Invoke();
@@ -35,6 +35,8 @@ namespace _Project.Core.Runtime.Menu.Main
         public void Initialize()
         {
             State = MenuState.MAIN;
+            
+            Debug.Log("MenuManager initialized");
         }
     }
 }
