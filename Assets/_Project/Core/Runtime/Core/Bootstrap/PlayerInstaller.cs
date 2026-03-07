@@ -17,6 +17,8 @@ namespace _Project.Core.Runtime.Core.Bootstrap
             Container.Bind<PlayerFactory>().AsSingle();
             Container.BindInstance(new SpawnPoint(spawnPoint)).AsSingle();
             Container.Bind<PlayerLifecycleService>().AsSingle();
+            
+            Debug.Log("Player installed");
         }
     }
 }

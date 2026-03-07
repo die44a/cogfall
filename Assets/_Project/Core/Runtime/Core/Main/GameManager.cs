@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+// ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
 namespace _Project.Core.Runtime.Core.Main
 {
@@ -21,31 +22,39 @@ namespace _Project.Core.Runtime.Core.Main
 
         public void PauseGame()
         {
+            if (State == GameState.PAUSED)
+                return;
+            
+            State = GameState.PAUSED;
+            
             foreach (var listener in _listeners)
                 if (listener is IPauseGameListener  startGameListener)
                     startGameListener.OnPauseGame();
             
             OnPauseGame?.Invoke();
             
-            Debug.Log("Game Paused");
+            Debug.Log($"Game Paused: {State}");
         }
 
         public void ResumeGame()
         {
+            if (State == GameState.PLAY)
+                return;
+            
+            State = GameState.PLAY;
+            
             foreach (var listener in _listeners)
-                if (listener is IResumeGameListener  startGameListener)
-                    startGameListener.OnResumeGame();
+                if (listener is IResumeGameListener resumeGameListener)
+                    resumeGameListener.OnResumeGame();
             
             OnResumeGame?.Invoke();
             
-            Debug.Log("Game Resumed");
+            Debug.Log($"Game Resumed: {State}");
         }
 
         void IInitializable.Initialize()
         {
             State = GameState.PLAY;
-            
-            Debug.Log("Game Manager initialized");
         }
     }
 }

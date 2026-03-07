@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+// ReSharper disable All
 
 namespace _Project.Core.Runtime.Core.Main
 {
@@ -17,7 +18,7 @@ namespace _Project.Core.Runtime.Core.Main
         void IPauseGameListener.OnPauseGame()
         {
             foreach (var listener in _listeners)
-                if (listener is IPauseGameListener  startGameListener)
+                if (listener is IPauseGameListener startGameListener)
                     startGameListener.OnPauseGame();
         }
 
