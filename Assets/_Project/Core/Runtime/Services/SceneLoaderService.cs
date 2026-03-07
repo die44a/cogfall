@@ -2,7 +2,7 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Services
 {
-    public class SceneLoaderService 
+    public class SceneLoaderService
     {
         private ZenjectSceneLoader _sceneLoader;
     

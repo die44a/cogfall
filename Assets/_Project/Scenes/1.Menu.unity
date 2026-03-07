@@ -346,6 +346,8 @@ GameObject:
   - component: {fileID: 1923675882}
   - component: {fileID: 1923675881}
   - component: {fileID: 1923675883}
+  - component: {fileID: 1923675885}
+  - component: {fileID: 1923675884}
   m_Layer: 0
   m_Name: '[System]'
   m_TagString: Untagged
@@ -368,6 +370,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1923675883}
+  - {fileID: 1923675885}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -412,6 +415,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c2e8888cf04265458407fd9db6aca7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Core.Runtime.Menu.MenuInstaller
+--- !u!114 &1923675884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923675880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4307ed239e224637bc9723aacf5db944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Core.Runtime.Menu.Main.MenuListenerComposite
+--- !u!114 &1923675885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923675880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b66db9854904fce8f8786024a7772d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Core.Runtime.Menu.Bootstrap.MenuUIInstaller
+  mainMenuScreen: {fileID: 3603649348954652863}
 --- !u!1001 &3603649348954652860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -487,8 +515,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4283853167442795025, guid: 2f0ca422c96737f4bb99ef03f3630a5c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3603649348954652863}
   m_SourcePrefab: {fileID: 100100000, guid: 2f0ca422c96737f4bb99ef03f3630a5c, type: 3}
+--- !u!114 &3603649348954652861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2698331831007792926, guid: 2f0ca422c96737f4bb99ef03f3630a5c, type: 3}
+  m_PrefabInstance: {fileID: 3603649348954652860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &3603649348954652862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4283853167442795025, guid: 2f0ca422c96737f4bb99ef03f3630a5c, type: 3}
+  m_PrefabInstance: {fileID: 3603649348954652860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3603649348954652863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603649348954652862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be9463d8e84caa4d96f8f3faac9d6b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Core.Runtime.Menu.UI.MainMenuScreen
+  startButton: {fileID: 3603649348954652861}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
