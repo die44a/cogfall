@@ -9,7 +9,7 @@ namespace _Project.Core.Runtime.Global
         public override void InstallBindings()
         {
             Container.Bind<SceneLoaderService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<InputService>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<InputService>().AsSingle();
         }
     }
 }

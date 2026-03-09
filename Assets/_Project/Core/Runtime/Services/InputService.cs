@@ -5,7 +5,7 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Services
 {
-    public sealed class InputService : IDisposable
+    public sealed class InputService : IDisposable, IIniputService
     {
         private readonly InputActions _inputActions;
         
