@@ -1,3 +1,4 @@
+using UnityEngine;
 using Zenject;
 
 namespace _Project.Core.Runtime.Services
@@ -25,6 +26,7 @@ namespace _Project.Core.Runtime.Services
         public void Initialize()
         {
             LoadMenuScene();
+            Debug.Log("Scene Loaded");
         }
     }
 }

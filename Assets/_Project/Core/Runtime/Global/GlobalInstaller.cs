@@ -12,7 +12,7 @@ namespace _Project.Core.Runtime.Global
         public override void InstallBindings()
         {
             Container.Bind<IInputService>().FromInstance(inputService).AsSingle();
-            Container.Bind<SceneLoaderService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SceneLoaderService>().AsSingle().NonLazy();
             Container.BindInterfacesTo<InputService>().AsSingle();
         }
     }
