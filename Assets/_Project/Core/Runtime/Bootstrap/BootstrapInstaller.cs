@@ -8,7 +8,6 @@ namespace _Project.Core.Runtime.Bootstrap
         // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<BootstrapInitializer>().AsSingle().NonLazy();
         }
     }
 }

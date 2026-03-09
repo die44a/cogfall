@@ -2,7 +2,7 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Services
 {
-    public class SceneLoaderService
+    public sealed class SceneLoaderService : IInitializable
     {
         private ZenjectSceneLoader _sceneLoader;
     
@@ -11,8 +11,6 @@ namespace _Project.Core.Runtime.Services
         {
             _sceneLoader = sceneLoader;
         }
-
-        public void Initialize() {}
         
         public void LoadMenuScene()
         {
@@ -22,6 +20,11 @@ namespace _Project.Core.Runtime.Services
         public void LoadCoreScene()
         {
             _sceneLoader.LoadScene("2.Core");
+        }
+
+        public void Initialize()
+        {
+            LoadMenuScene();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace _Project.Core.Runtime.Menu.UI
         
         void IGameStartListener.OnGameStart()
         {
-            Debug.Log("Game started");
+            
         }
 
         private void Awake()

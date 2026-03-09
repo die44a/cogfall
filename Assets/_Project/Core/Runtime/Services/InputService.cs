@@ -5,9 +5,9 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Services
 {
-    public class InputService : IDisposable
+    public sealed class InputService : IDisposable
     {
-        private InputActions _inputActions;
+        private readonly InputActions _inputActions;
         
         public event Action<Vector2> Move;
         public event Action Pause;
