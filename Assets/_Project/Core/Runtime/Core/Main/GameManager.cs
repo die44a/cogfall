@@ -1,23 +1,27 @@
 using System;
 using System.Collections.Generic;
+using _Project.Core.Runtime.Services;
 using UnityEngine;
 using Zenject;
 // ReSharper disable Unity.PerformanceCriticalCodeInvocation
 
 namespace _Project.Core.Runtime.Core.Main
 {
-    public sealed class GameManager : IInitializable
+    public sealed class GameManager : IInitializable, IDisposable
     {
+        [Inject]
+        private IInputService _inputService;
+        
         public event Action OnPauseGame;
         public event Action OnResumeGame;
         
         public GameState State { get; private set; }
         private List<IGameListener> _listeners = new();
         
-        public void AddListerner(IGameListener listener)
+        public void AddListener(IGameListener listener)
             => _listeners.Add(listener);
         
-        public void RemoveListerner(IGameListener listener)
+        public void RemoveListener(IGameListener listener)
             => _listeners.Remove(listener);
 
         public void PauseGame()
@@ -52,9 +56,23 @@ namespace _Project.Core.Runtime.Core.Main
             Debug.Log($"Game Resumed: {State}");
         }
 
+        private void TogglePause()
+        {
+            if (State == GameState.PAUSED)
+                ResumeGame();
+            else
+                PauseGame();
+        }
+
         void IInitializable.Initialize()
         {
+            _inputService.Pause += TogglePause;
             State = GameState.PLAY;
+        }
+
+        void IDisposable.Dispose()
+        {
+            _inputService.Pause -= TogglePause;
         }
     }
 }

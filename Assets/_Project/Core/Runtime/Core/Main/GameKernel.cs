@@ -13,7 +13,7 @@ namespace _Project.Core.Runtime.Core.Main
         private GameManager _gameManager;
         
         [Inject(Optional = true, Source = InjectSources.Local)] 
-        private List<IGameTickable> _tickables = new();
+        private List<IGameTickable> _tiсkables = new();
         
         [Inject(Optional = true, Source = InjectSources.Local)] 
         private List<IGameFixedTickable> _fixedTickables = new();
@@ -29,7 +29,7 @@ namespace _Project.Core.Runtime.Core.Main
                 return;
             
             var deltaTime = Time.fixedDeltaTime;
-            foreach (var tickable in _tickables)
+            foreach (var tickable in _tiсkables)
             {
                 tickable.Tick(deltaTime);
             }

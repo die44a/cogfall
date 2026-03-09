@@ -13,7 +13,6 @@ namespace _Project.Core.Runtime.Global
         {
             Container.Bind<IInputService>().FromInstance(inputService).AsSingle();
             Container.BindInterfacesAndSelfTo<SceneLoaderService>().AsSingle().NonLazy();
-            Container.BindInterfacesTo<InputService>().AsSingle();
         }
     }
 }

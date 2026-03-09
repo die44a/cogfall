@@ -31,12 +31,12 @@ namespace _Project.Core.Runtime.Core.Main
         
         public void Awake()
         {
-            _gameManager.AddListerner(this);
+            _gameManager.AddListener(this);
         }
 
         public void OnDestroy()
         {
-            _gameManager.RemoveListerner(this);
+            _gameManager.RemoveListener(this);
         }
     }
 }
