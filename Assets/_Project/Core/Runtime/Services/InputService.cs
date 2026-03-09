@@ -5,31 +5,22 @@ using Zenject;
 
 namespace _Project.Core.Runtime.Services
 {
-    public sealed class InputService : IDisposable, IIniputService
+    public sealed class InputService : MonoBehaviour, IInputService
     {
-        private readonly InputActions _inputActions;
-        
         public event Action<Vector2> Move;
         public event Action Pause;
-
-        public InputService()
+        
+        // Unity input action subscribe these methods 
+        public void OnMove(InputAction.CallbackContext ctx)
         {
-            _inputActions = new InputActions();
-            _inputActions.Enable();
-
-            _inputActions.Gameplay.Move.performed += ctx =>
-                Move?.Invoke(ctx.ReadValue<Vector2>());
-
-            _inputActions.Gameplay.Move.canceled += ctx =>
-                Move?.Invoke(Vector2.zero);
-            
-            _inputActions.Gameplay.TogglePause.performed += ctx =>
-                Pause?.Invoke();
+            Move?.Invoke(ctx.ReadValue<Vector2>());
+            Debug.Log("Move pressed");
         }
 
-        public void Dispose()
+        public void OnPause(InputAction.CallbackContext ctx)
         {
-            _inputActions.Disable();
+            Pause?.Invoke();
+            Debug.Log("Pause pressed");
         }
     }
 }
