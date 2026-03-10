@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Project.Core.Runtime.Core.Player;
 using _Project.Core.Runtime.Services;
 using UnityEngine;
 using Zenject;
@@ -11,6 +12,9 @@ namespace _Project.Core.Runtime.Core.Main
     {
         [Inject]
         private IInputService _inputService;
+        
+        [Inject]
+        private PlayerLifecycleService _playerLifecycleService;
         
         public event Action OnPauseGame;
         public event Action OnResumeGame;
@@ -66,6 +70,7 @@ namespace _Project.Core.Runtime.Core.Main
 
         void IInitializable.Initialize()
         {
+            _playerLifecycleService.SpawnPlayer();
             _inputService.Pause += TogglePause;
             State = GameState.PLAY;
         }
